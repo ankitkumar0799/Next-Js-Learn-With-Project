@@ -12,7 +12,11 @@ export function GET(){
         course: "bca,"
     },
     {
+<<<<<<< HEAD
         name: "manjeet",    
+=======
+        name: "manjeet",
+>>>>>>> 94bfd5e57bc8ec84c0f0c571838ee3d2b166c436
         phone: "4584598652",
         course: "bca,"
     },
