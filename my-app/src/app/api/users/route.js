@@ -4,7 +4,7 @@ export function GET(){
     const users= [{
         name: "Ankit Kumar",
         phone: "7042879410",
-        course: "bca,"
+        course: "bca12,"
     },
     {
         name: "Monu",
