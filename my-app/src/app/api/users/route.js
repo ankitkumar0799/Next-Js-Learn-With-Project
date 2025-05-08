@@ -12,11 +12,7 @@ export function GET(){
         course: "bca,"
     },
     {
-<<<<<<< HEAD
         name: "manjeet",    
-=======
-        name: "manjeet",
->>>>>>> 94bfd5e57bc8ec84c0f0c571838ee3d2b166c436
         phone: "4584598652",
         course: "bca,"
     },
@@ -32,7 +28,22 @@ export function GET(){
     },]
     return NextResponse.json(users);
 }
-export function POST(){
+
+// ye hum user se kuch post karne ke liye use karte hai aur isse hum bohot si chize kar sakte hai 
+export function POST(request){
+    // const Body=request.body;
+    // const Body = request.body;
+    // const method = request.method   ;
+
+    const {body,method,cookies} = request;
+
+    console.log(body);
+    console.log(method);
+    console.log(cookies);
+
+    return NextResponse.json({
+        "name": "ankit bajate raho"
+    })
     
 }
 export function DELETE(request){
