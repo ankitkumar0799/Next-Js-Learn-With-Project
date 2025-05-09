@@ -42,7 +42,7 @@ export function POST(request){
     console.log(cookies);
 
     return NextResponse.json({
-        "name": "ankit bajate raho"
+        "name": "ankit NextjsResponce Pending"
     })
     
 }
