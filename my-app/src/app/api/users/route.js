@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-export function GET(){
+export function GET(request){
     const users= [{
         name: "Ankit Kumar",
         phone: "7042879410",
@@ -26,7 +26,7 @@ export function GET(){
         phone: "4521542515",
         course: "bca,"
     },]
-    return NextResponse.json(users);
+    return NextResponse.json(users)
 }
 
 // ye hum user se kuch post karne ke liye use karte hai aur isse hum bohot si chize kar sakte hai 
@@ -35,20 +35,28 @@ export function POST(request){
     // const Body = request.body;
     // const method = request.method   ;
 
-    const {body,method,cookies} = request;
-
-    console.log(body);
-    console.log(method);
+    const {body,method,cookies,headers} = request;
+    // request.cookies.set('show-banner', 'false')
+    // console.log(body);
+    // console.log(method);
+    console.log("cokkies ko hata diya gaya hai")
+    // console.log(request.nextUrl.pathname)
+    console.log(request.nextUrl.pathname)
     console.log(cookies);
+    // console.log(headers);
 
     return NextResponse.json({
-        "name": "ankit NextjsResponce Pending"
+        "messag": "the POST method was called"
     })
     
 }
 export function DELETE(request){
     console.log("delete api called");
+    const { body,method} = request;
+    console.log(body);
+    console.log(method);
     return NextResponse.json({
+        
         message: "delete sucessfully",
         Status: "Done Deletiation"
     },{status: 301,statusText: "h"})
