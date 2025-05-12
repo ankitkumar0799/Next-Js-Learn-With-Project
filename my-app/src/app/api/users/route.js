@@ -30,20 +30,31 @@ export function GET(request){
 }
 
 // ye hum user se kuch post karne ke liye use karte hai aur isse hum bohot si chize kar sakte hai 
-export function POST(request){
+export async function POST(request){
     // const Body=request.body;
     // const Body = request.body;
     // const method = request.method   ;
 
-    const {body,method,cookies,headers} = request;
+    // const {body,method,cookies,headers} = request;
     // request.cookies.set('show-banner', 'false')
     // console.log(body);
     // console.log(method);
-    console.log("cokkies ko hata diya gaya hai")
+    // request.cookies.clear()
+    // console.log("cokkies ko hata diya gaya hai")
     // console.log(request.nextUrl.pathname)
-    console.log(request.nextUrl.pathname)
-    console.log(cookies);
+    
+    // console.log(request.nextUrl.pathname)
+    // console.log(request.nextUrl.searchParams);
+    // console.log(cookies);
     // console.log(headers);
+
+    const textData= await request.text();
+
+    // const jsonData = await request.json();
+    // console.log(jsonData);
+    console.log(textData);
+
+
 
     return NextResponse.json({
         "messag": "the POST method was called"
