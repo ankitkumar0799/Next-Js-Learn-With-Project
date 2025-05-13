@@ -5,7 +5,7 @@ export async function connectDB() {
             dbName: "Work_manager"
         })
         // console.log(connection)
-        console.log("database connect with the", mongoose.connection.host)
+        console.log("database connect with the CONNECTION", mongoose.connection.host)
 
     } catch (error) {
         console.log("fail to connect with data base")
