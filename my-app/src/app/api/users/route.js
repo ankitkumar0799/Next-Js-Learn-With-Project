@@ -4,33 +4,21 @@ import { NextResponse } from "next/server"
 
 connectDB();
 
-export function GET(request) {
-    const users = [{
-        name: "Ankit Kumar",
-        phone: "7042879410",
-        course: "bca12,"
-    },
-    {
-        name: "Monu",
-        phone: "2653525894",
-        course: "bca,"
-    },
-    {
-        name: "manjeet",
-        phone: "4584598652",
-        course: "bca,"
-    },
-    {
-        name: "shubham",
-        phone: "7584589652",
-        course: "bca,"
-    },
-    {
-        name: "priya",
-        phone: "4521542515",
-        course: "bca,"
-    },]
-    return NextResponse.json(users)
+export async function GET(request) {
+    let user = []
+
+    try {
+        
+        user = await User.find().select("-password"); 
+       
+    } catch (error) {
+        console.log(error.code);
+        return NextResponse.json({
+            message:"failed to Get User",
+            success: false
+        })
+    }
+    return NextResponse.json(user)
 }
 
 
@@ -41,6 +29,7 @@ export function GET(request) {
 //craete user
 // ye hum user se kuch post karne ke liye use karte hai aur isse hum bohot si chize kar sakte hai 
 export async function POST(request) {
+ 
     // const Body=request.body;
     // const Body = request.body;
     // const method = request.method   ;
@@ -64,15 +53,17 @@ export async function POST(request) {
     // })
 
 
-
+const {name,email,password,about,profileURL} = await request.json();
+console.log({name,email,password,about,profileURL})
     //Fetch User Data From DataBase
     try {
-            const user = new User({
+        const user = new User({
         name,
         email,
-        passoword,
+        password,
         about,
-        profileURL
+        profileURL,
+        
     })
     const createdUsser = await user.save();
 
@@ -82,15 +73,22 @@ export async function POST(request) {
     })
     return responce
     } catch (error) {
-        return NextResponse.json({
-            
-        })
-    }
+        console.log(error);
+        if (error.code === 11000) {
+            return NextResponse.json("the email is already exist!");
+        }else{
+            return NextResponse.json(error);
+        }
+        
+        };
+    
+
+      }
 
 
     
     
-}
+
 export function DELETE(request) {
     console.log("delete api called");
     const { body, method } = request;

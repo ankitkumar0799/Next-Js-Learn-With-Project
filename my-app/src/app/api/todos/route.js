@@ -1,26 +1,42 @@
+
+
+import { connectDB } from "@/helper/db";
+import { Todo } from "@/models/todo";
 import { NextResponse } from "next/server";
 
-export function GET(request){
-    const data = [{
-        
-            name: "priya",
-            phone: "4521542515",
-            course: "bca,"
-        
-    },
-    {
-        
-        name: "Aman",
-        phone: "4526541542515",
-        course: "bcaSQ,"
-    
-},
-{
-        
-    name: "SONU",
-    phone: "4526546511542515",
-    course: "bcaSDB ,"
+connectDB();
 
-},]
-return NextResponse.json(data);
+export async function POST(request) {
+  try {
+    const { title, description, status, dueDate, userId } = await request.json();
+
+    const todo = new Todo({
+      title,
+      description,
+      status,
+      dueDate,
+      user: userId, // ✅ include user if needed
+    });
+
+    const createdTodo = await todo.save();
+
+    return NextResponse.json({
+      message: "Todo created successfully",
+      success: true,
+      todo: createdTodo,
+    }, {
+      status: 201,
+    });
+
+  } catch (error) {
+    console.error("Error creating todo:", error);
+    return NextResponse.json({
+      message: "Failed to create todo",
+      success: false,
+      error: error.message,
+    }, {
+      status: 500,
+    });
+  }
 }
+

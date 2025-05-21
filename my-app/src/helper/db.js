@@ -18,8 +18,8 @@ export async function connectDB() {
 
 
 
-       await uuser.save();
-        console.log("user is created sucesfully");
+    //    await uuser.save();
+    //     console.log("user is created sucesfully");
 
         // console.log(connection)
         console.log("database connect with the CONNECTION", mongoose.connection.host)
