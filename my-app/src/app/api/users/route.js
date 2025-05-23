@@ -101,6 +101,3 @@ export function DELETE(request) {
     }, { status: 301, statusText: "h" })
 
 }
-export function PUT() {
-
-}

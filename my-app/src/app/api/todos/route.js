@@ -6,6 +6,29 @@ import { NextResponse } from "next/server";
 
 connectDB();
 
+
+
+
+
+//get all posts
+export async function GET(request) {
+  let post = [];
+
+  try {
+      
+      post = await Todo.find(); 
+     
+  } catch (error) {
+      console.log(error.code);
+      return NextResponse.json({
+          message:"failed to Get User",
+          success: false
+      })
+  }
+  return NextResponse.json(post)
+}
+
+// Create post 
 export async function POST(request) {
   try {
     const { title, description, status, dueDate, userId } = await request.json();
@@ -15,7 +38,7 @@ export async function POST(request) {
       description,
       status,
       dueDate,
-      user: userId, // ✅ include user if needed
+      user: userId,
     });
 
     const createdTodo = await todo.save();
@@ -39,4 +62,15 @@ export async function POST(request) {
     });
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
