@@ -54,7 +54,7 @@ export async function POST(request) {
 
 
 const {name,email,password,about,profileURL} = await request.json();
-console.log({name,email,password,about,profileURL})
+// console.log({name,email,password,about,profileURL})
     //Fetch User Data From DataBase
     try {
         const user = new User({
