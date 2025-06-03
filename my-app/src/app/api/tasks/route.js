@@ -18,7 +18,7 @@ export async function GET(request) {
         status:201
     });
     } catch (error) {
-        return getResponceMessage("lund lele",404,false)
+        return getResponceMessage("failed to get all tesks",404,false)
     }
 
 }
@@ -43,11 +43,9 @@ export async function POST(request) {
       
 
     } catch (error) {
-        console.log(error.errors);
-        if (error.code === 11000) {
-            return NextResponse.json("the task is already exist!");
-        }else{
-            return NextResponse.json(error);
-        }
+        // console.log(error.errors);
+        console.log("my message")
+        
+        return getResponceMessage("failed to create Task",500,false)
     }
 }
