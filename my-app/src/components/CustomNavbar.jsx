@@ -4,35 +4,54 @@ import React from "react";
 
 const CustomNavbar = () => {
   return (
-    <nav className="bg-cyan-400 h-12 py-2 px-4 flex justify-between items-center">
-      <div>
-        <a href="/#!" className="text-3xl font-semibold">
-          <h1>Task Watcher</h1>
-        </a>
-      </div>
-      <div>
-        <ul className="flex  space-x-3">
-          <li className="px-5 cursor-pointer">
-            <Link href={'/'} className="hover:text-blue-200">Home</Link>
+    <nav className="bg-white shadow-md py-3 px-6">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-2xl md:text-3xl font-bold text-cyan-600">
+          Task Watcher
+        </Link>
+
+        {/* Navigation Links */}
+        <ul className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
+          <li>
+            <Link href="/" className="hover:text-cyan-600 transition">
+              Home
+            </Link>
           </li>
-          <li className="px-5">
-          <Link href="/add-task" className="hover:text-blue-200"> Add Tasks</Link>
-            
+          <li>
+            <Link href="/add-task" className="hover:text-cyan-600 transition">
+              Add Task
+            </Link>
           </li>
-          <li className="px-5 ">
-          <a href="#!" className="hover:text-blue-200">Show Tasks</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul className="px-5 flex space-x-3">
-          <li >
-            <a href="#!"> Login </a>
-          </li>
-          <li className="px-5 ">
-            <a href="#!"> Sign Up</a>
+          <li>
+            <Link href="/show-tasks" className="hover:text-cyan-600 transition">
+              Show Tasks
+            </Link>
           </li>
         </ul>
+
+        {/* Auth Buttons */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Link
+            href="/login"
+            className="px-4 py-1 rounded-md border border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white transition"
+          >
+            Login
+          </Link>
+          <Link
+            href="/signup"
+            className="px-4 py-1 rounded-md bg-cyan-600 text-white hover:bg-cyan-700 transition"
+          >
+            Sign Up
+          </Link>
+        </div>
+
+        {/* Mobile Menu Icon (Optional for future) */}
+        {/* <div className="md:hidden">
+          <button>
+            <MenuIcon />
+          </button>
+        </div> */}
       </div>
     </nav>
   );
