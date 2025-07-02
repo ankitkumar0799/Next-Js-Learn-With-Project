@@ -8,7 +8,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div>
-      <h1 className="text-5xl">Welcome to Task Manager</h1>
+      <h1 className="text-5xl">Welcome to ankit Task Manager</h1>
     </div>
   );
 }
