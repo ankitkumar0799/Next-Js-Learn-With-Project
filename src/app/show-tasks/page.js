@@ -7,7 +7,7 @@ const ShowTasks = () => {
     <div className="grid grid-cols-12 justify-center p-10
     ">
       <div className=" col-span-6 col-start-4 p-5">
-        <h1>Add your Task Here!!!</h1>
+        <h1>Add Your Daily Tasks Here!!</h1>
         <form action="#!">
             <div className="mt-4 ">
                 <label className="text-sm font-medium block">Title</label>
